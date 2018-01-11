@@ -6,7 +6,7 @@ Extract protein fasta from Genbank files
 # Usage
 
 ```bash
-python genbank_to_faa.py --help
+$ python genbank_to_faa.py --help
 usage: genbank_to_faa.py [-h] [--qualifier [QUALIFIER]] [genbank] [protein_fasta]
 
 Extract protein fasta from Genbank files
