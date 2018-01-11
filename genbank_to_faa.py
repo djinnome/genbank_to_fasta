@@ -8,7 +8,6 @@ faa_filename = "ABF_000042_proteins.faa"
 
 def convert_genbank_to_faa( gbk_filename, faa_filename, qualifier='label') :
     for seq_record in SeqIO.parse(gbk_filename, "genbank") :
-        print "Dealing with GenBank record %s" % seq_record.id
         for seq_feature in seq_record.features :
             if seq_feature.type=="CDS" :
                 if 'translation' in seq_feature.qualifiers and len(seq_feature.qualifiers['translation'])==1:
