@@ -1,17 +1,14 @@
 
 from Bio import SeqIO
-import sys
+import sys, os
 import argparse
-
-gbk_filename = "ABF_000042.gb"
-faa_filename = "ABF_000042_proteins.faa"
 
 def convert_genbank_to_faa( gbk_filename, faa_filename, qualifier='label') :
     for seq_record in SeqIO.parse(gbk_filename, "genbank") :
         for seq_feature in seq_record.features :
-            if seq_feature.type=="CDS" :
-                if 'translation' in seq_feature.qualifiers and len(seq_feature.qualifiers['translation'])==1:
-                    faa_filename.write(">%s from %s\n%s\n" % (
+            if seq_feature.type=="CDS" andx 'translation' in seq_feature.qualifiers and len(seq_feature.qualifiers['translation'])==1:
+                    faa_filename.write(">%s_%s from %s\n%s\n" % (
+                        os.path.basename(gbk_filename.name).split('.')[0],
                         seq_feature.qualifiers[qualifier][0],
                         seq_record.name,
                         seq_feature.qualifiers['translation'][0]))
